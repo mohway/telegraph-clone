@@ -1,0 +1,25 @@
+#navigation nav {
+  margin-bottom: 30px;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.navbar-nav a {
+  margin-left: 10px;
+  padding-bottom: 0.3125rem;
+  color: lightslategray;
+}
+
+.navbar-nav a:hover {
+  text-decoration: none;
+}
+
+.navbar-brand {
+  font-weight: bolder;
+}
+
+.plus {
+  font-weight: bolder;
+}

@@ -1,0 +1,30 @@
+.form-control {
+  border: none;
+  resize: none;
+}
+
+input.form-control {
+  width: 100%;
+  font-size: 1.3em;
+  font-weight: bolder;
+}
+
+.inline-title-submit {
+  flex-direction: row;
+  display: inline-flex;
+  width: 100%;
+}
+
+.inline-title-submit button {
+  align-self: flex-end;
+  margin-left: 20px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.btn-outline-dark {
+  font-weight: bolder;
+}
