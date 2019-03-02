@@ -1,16 +1,20 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
 import "./App.css";
 
-import Navigation from "./components/Navigation";
-import PostForm from "./components/PostForm";
+import Navigation from "./components/Navigation/Navigation";
+import PostForm from "./components/PostForm/PostForm";
+
+import store from "./store.js";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Navigation />
-        <PostForm />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <Navigation />
+        </div>
+      </Provider>
     );
   }
 }

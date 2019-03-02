@@ -1,9 +1,27 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { addPost } from "../../actions/postActions";
+import PropTypes from "prop-types";
 
-import "./styles/PostForm.css";
+import "./PostForm.css";
 
 export class PostForm extends Component {
+  constructor(props) {
+    super(props);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit() {
+    console.log("hi");
+    const post = {
+      title: document.getElementById("title").value,
+      body: document.getElementById("text").value
+    };
+
+    addPost(post);
+  }
+
   render() {
     const autoExpand = field => {
       field.style.height = "inherit";
@@ -32,12 +50,14 @@ export class PostForm extends Component {
       <div className="container">
         <Form>
           <Form.Group className="inline-title-submit">
-            <Form.Control placeholder="Title" />
-            <Button variant="outline-dark">Post</Button>
+            <Form.Control placeholder="Title" id="title" />
+            <Button variant="outline-dark" type="submit">
+              Post
+            </Button>
           </Form.Group>
 
           <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Control as="textarea" rows="1" placeholder="Text" />
+            <Form.Control as="textarea" id="text" rows="1" placeholder="Text" />
           </Form.Group>
         </Form>
       </div>
@@ -45,4 +65,11 @@ export class PostForm extends Component {
   }
 }
 
-export default PostForm;
+PostForm.propTypes = {
+  addPost: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addPost }
+)(PostForm);

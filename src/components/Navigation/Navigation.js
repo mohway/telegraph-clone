@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import "./styles/Navigation.css";
+import "./Navigation.css";
+
+import Posts from "../Posts/Posts";
+import PostForm from "../PostForm/PostForm";
 
 export class Navigation extends Component {
   render() {
@@ -9,20 +12,21 @@ export class Navigation extends Component {
       <Router>
         <div id="navigation">
           <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home">Telegraph</Navbar.Brand>
+            <Navbar.Brand>
+              <Link to="/">Telegraph</Link>
+            </Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link href="#posts">
+              <Nav.Link>
                 <Link to="/posts/">Posts</Link>
               </Nav.Link>
-              <Nav.Link href="#addpost">
-                <Link to="/addpost/">Add Post</Link>
+              <Nav.Link>
+                <Link to="/">Add Post</Link>
               </Nav.Link>
             </Nav>
           </Navbar>
+          <Route path="/" exact component={PostForm} />
+          <Route path="/posts/" component={Posts} />
         </div>
-
-        {/*<Route path="/posts/" component={Posts} />
-        <Route path="/addpost" component={PostForm} />*/}
       </Router>
     );
   }
