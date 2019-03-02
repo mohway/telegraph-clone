@@ -9,17 +9,17 @@ import "./PostForm.css";
 export class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  onSubmit() {
-    console.log("hi");
+  handleClick() {
     const post = {
       title: document.getElementById("title").value,
       body: document.getElementById("text").value
     };
+    console.log(post);
 
-    addPost(post);
+    this.props.addPost(post);
   }
 
   render() {
@@ -51,7 +51,7 @@ export class PostForm extends Component {
         <Form>
           <Form.Group className="inline-title-submit">
             <Form.Control placeholder="Title" id="title" />
-            <Button variant="outline-dark" type="submit">
+            <Button variant="outline-dark" onClick={this.handleClick}>
               Post
             </Button>
           </Form.Group>

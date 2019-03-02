@@ -3,9 +3,7 @@ import { Provider } from "react-redux";
 import "./App.css";
 
 import Navigation from "./components/Navigation/Navigation";
-import PostForm from "./components/PostForm/PostForm";
-
-import store from "./store.js";
+import store from "./store";
 
 class App extends Component {
   render() {
