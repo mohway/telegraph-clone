@@ -2,18 +2,50 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuid from "uuid";
 import "./Posts.css";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
+
+import { deletePost } from "../../actions/postActions";
 
 export class Posts extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleEdit = this.handleEdit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleEdit() {
+    console.log("hello");
+  }
+
+  handleDelete(id, e) {
+    console.log(id);
+    this.props.deletePost(id);
+  }
+
   render() {
     console.log(this.props.posts.posts);
 
     const getPosts = this.props.posts.posts.map(post => (
       <Card>
         <Card.Body>
-          <div key={uuid()}>
+          <div key={post.id}>
             <h3>{post.title}</h3>
             <p>{post.body}</p>
+          </div>
+          <div className="pull-right">
+            <Button
+              variant="outline-primary"
+              onClick={() => this.handleEdit(post.id)}
+            >
+              Edit
+            </Button>
+            <Button
+              variant="outline-danger"
+              onClick={() => this.handleDelete(post.id)}
+            >
+              Delete
+            </Button>
           </div>
         </Card.Body>
       </Card>
@@ -34,5 +66,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  null
+  { deletePost }
 )(Posts);

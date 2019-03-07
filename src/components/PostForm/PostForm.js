@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { addPost } from "../../actions/postActions";
 import PropTypes from "prop-types";
+import uuid from "uuid";
 
 import "./PostForm.css";
 
@@ -15,7 +16,8 @@ export class PostForm extends Component {
   handleClick() {
     const post = {
       title: document.getElementById("title").value,
-      body: document.getElementById("text").value
+      body: document.getElementById("text").value,
+      id: uuid()
     };
     console.log(post);
 

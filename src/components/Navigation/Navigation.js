@@ -23,6 +23,10 @@ export class Navigation extends Component {
                 <Link to="/">Add Post</Link>
               </Nav.Link>
             </Nav>
+            <Nav>
+              <Nav.Link>Login</Nav.Link>
+              <Nav.Link>Register</Nav.Link>
+            </Nav>
           </Navbar>
           <Route path="/" exact component={PostForm} />
           <Route path="/posts/" component={Posts} />

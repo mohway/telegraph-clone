@@ -3,3 +3,8 @@
   color: gray;
   text-align: center;
 }
+
+.pull-right {
+  display: flex;
+  justify-content: space-between;
+}
