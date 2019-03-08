@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Card, Button, Form } from "react-bootstrap";
 
+import PostForm from "../PostForm/PostForm";
+
 import "./Post.css";
 
 import { deletePost, editPost } from "../../actions/postActions";
