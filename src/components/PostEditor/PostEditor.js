@@ -98,7 +98,12 @@ class PostEditor extends Component {
             value={title}
             onChange={this.handleInputChange}
           />
-          <Button variant="outline-dark" onClick={this.handleSubmit}>
+          <Button
+            variant="outline-dark"
+            id="submit"
+            disabled={this.state.title === "" || this.state.body === ""}
+            onClick={this.handleSubmit}
+          >
             Submit
           </Button>
         </Form.Group>
