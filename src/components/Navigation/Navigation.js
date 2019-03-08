@@ -16,12 +16,12 @@ export class Navigation extends Component {
               <Link to="/">Telegraph</Link>
             </Navbar.Brand>
             <Nav className="mr-auto">
-              <Nav.Link>
+              <Nav.Item>
                 <Link to="/posts/">Posts</Link>
-              </Nav.Link>
-              <Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Link to="/">Add Post</Link>
-              </Nav.Link>
+              </Nav.Item>
             </Nav>
             <Nav>
               <Nav.Link>Login</Nav.Link>

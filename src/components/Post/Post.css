@@ -1,0 +1,10 @@
+.pull-right {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-primary {
+  background-color: white;
+  color: black;
+  border: none;
+}

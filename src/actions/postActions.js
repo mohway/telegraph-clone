@@ -7,12 +7,12 @@ export const addPost = post => dispatch => {
   });
 };
 
-/*export const editPost = post => dispatch => {
+export const editPost = post => dispatch => {
   dispatch({
     type: EDIT_POST,
     payload: post
   });
-};*/
+};
 
 export const deletePost = id => dispatch => {
   dispatch({

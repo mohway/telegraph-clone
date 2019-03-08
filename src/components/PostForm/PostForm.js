@@ -10,21 +10,39 @@ import "./PostForm.css";
 export class PostForm extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+
+    this.state = {
+      title: "",
+      body: ""
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleClick() {
-    const post = {
-      title: document.getElementById("title").value,
-      body: document.getElementById("text").value,
-      id: uuid()
-    };
-    console.log(post);
+  handleInputChange(e) {
+    const target = e.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+
+    console.log(this.state);
+  }
+
+  handleSubmit() {
+    const { title, body } = this.state;
+    const post = { title, body, id: uuid() };
 
     this.props.addPost(post);
+    this.setState({ title: "", body: "" });
   }
 
   render() {
+    // Handling the automatic expansion of textarea form
+
     const autoExpand = field => {
       field.style.height = "inherit";
       const computed = window.getComputedStyle(field);
@@ -52,14 +70,28 @@ export class PostForm extends Component {
       <div className="container">
         <Form>
           <Form.Group className="inline-title-submit">
-            <Form.Control placeholder="Title" id="title" />
-            <Button variant="outline-dark" onClick={this.handleClick}>
+            <Form.Control
+              placeholder="Title"
+              id="title"
+              name="title"
+              value={this.state.title}
+              onChange={this.handleInputChange}
+            />
+            <Button variant="outline-dark" onClick={this.handleSubmit}>
               Post
             </Button>
           </Form.Group>
 
-          <Form.Group controlId="exampleForm.ControlTextarea1">
-            <Form.Control as="textarea" id="text" rows="1" placeholder="Text" />
+          <Form.Group>
+            <Form.Control
+              as="textarea"
+              id="text"
+              name="body"
+              rows="1"
+              placeholder="Text"
+              value={this.state.body}
+              onChange={this.handleInputChange}
+            />
           </Form.Group>
         </Form>
       </div>
