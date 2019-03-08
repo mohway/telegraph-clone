@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Button, Form } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 import PostEditor from "../PostEditor/PostEditor";
 
@@ -32,23 +32,19 @@ class Post extends Component {
 
   handleEdit() {
     this.setState({ edit: true });
-    console.log(this.state);
   }
 
   handleConfirm(post) {
-    console.log("hello");
     this.props.editPost(post);
     this.setState({ edit: false });
   }
 
   handleDelete(id) {
-    console.log(id);
     this.props.deletePost(id);
   }
 
   render() {
     const { post } = this.props;
-    console.log(post);
     return (
       <Card>
         <Card.Body>

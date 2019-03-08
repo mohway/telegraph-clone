@@ -7,10 +7,9 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case ADD_POST:
-      console.log(action.payload);
       return {
         ...state,
-        byId: [...state.byId, action.payload]
+        byId: [action.payload, ...state.byId]
       };
     case DELETE_POST:
       return {
@@ -23,7 +22,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         byId: state.byId.map(post => {
-          console.log(post, action.payload);
           return post.id === action.payload.id ? action.payload : post;
         })
       };

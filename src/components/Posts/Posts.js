@@ -7,8 +7,6 @@ import "./Posts.css";
 
 export class Posts extends Component {
   render() {
-    console.log(this.props.posts);
-
     const getPosts =
       this.props.posts.length !== 0 ? (
         this.props.posts.map(post => <Post post={post} key={post.id} />)

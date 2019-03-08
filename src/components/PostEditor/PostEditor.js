@@ -34,14 +34,11 @@ class PostEditor extends Component {
   }
 
   handleSubmit() {
+    const { title, body, id } = this.state;
     if (this.state.editing) {
-      const { title, body, id } = this.state;
       this.props.handler({ title, body, id });
     } else {
-      const { title, body } = this.state;
       const post = { title, body, id: uuid() };
-
-      console.log(post);
 
       this.props.addPost(post);
       this.setState({ title: "", body: "" });
@@ -66,15 +63,16 @@ class PostEditor extends Component {
   // Expand the form on mount, add listener for textarea input
   componentDidMount() {
     if (this.state.editing) {
-      this.setState({
-        title: this.props.post.title,
-        body: this.props.post.body,
-        id: this.props.post.id
-      });
-    }
-
-    if (this.state.body.length !== 0) {
-      this.handleAutoExpansion(document.getElementById("text"));
+      this.setState(
+        {
+          title: this.props.post.title,
+          body: this.props.post.body,
+          id: this.props.post.id
+        },
+        () => {
+          this.handleAutoExpansion(document.getElementById("text"));
+        }
+      );
     }
 
     document.addEventListener(
@@ -85,12 +83,10 @@ class PostEditor extends Component {
       },
       false
     );
-
-    console.log(this.state);
   }
 
   render() {
-    const { title, body, id } = this.state;
+    const { title, body } = this.state;
 
     return (
       <Form className="container">
