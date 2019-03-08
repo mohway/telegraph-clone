@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "./Navigation.css";
 
 import Posts from "../Posts/Posts";
-import PostForm from "../PostForm/PostForm";
+import PostEditor from "../PostEditor/PostEditor";
 
 export class Navigation extends Component {
   render() {
@@ -28,7 +28,7 @@ export class Navigation extends Component {
               <Nav.Link>Register</Nav.Link>
             </Nav>
           </Navbar>
-          <Route path="/" exact component={PostForm} />
+          <Route path="/" exact component={PostEditor} />
           <Route path="/posts/" component={Posts} />
         </div>
       </Router>
